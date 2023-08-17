@@ -10,15 +10,19 @@ class simplesState extends State<simples> {
 
   int _pontuacaoTimeUm = 0, _pontuacaoTimeDois = 0;
 
-  Color cor_padrao_um = Colors.orange;
-  Color cor_padrao_dois = const Color(0xf2f2f2ff);
-
   @override
   Widget build (BuildContext context) {
+
+    Color corPadraoUm = Colors.orange;
+    Color corPadraoDois = const Color(0xf2f2f2ff);
+
+    double espacoBotaoTop = 10;
+    double espacoBotaoRight = 15;
+
     return Scaffold(
-        backgroundColor: cor_padrao_dois,
+        backgroundColor: corPadraoDois,
         appBar: AppBar(
-          title: Text("Contador de Truco"),
+          title: const Text("Contador de Truco"),
           centerTitle: true,
           backgroundColor: Colors.orange,
         ),
@@ -29,6 +33,7 @@ class simplesState extends State<simples> {
               Expanded(
                   child: Row(
                     children: [
+                      // Espaço para time 1
                       Expanded(
                         child: Container(
                           child: Column(
@@ -36,14 +41,14 @@ class simplesState extends State<simples> {
                             children: [
                               Text("Time 1",
                                   style: TextStyle(
-                                    color: cor_padrao_um,
+                                    color: corPadraoUm,
                                     fontSize: 35,
                                     fontWeight: FontWeight.w900,
                                   ),
                               ),
                               Text("$_pontuacaoTimeUm",
                                 style: TextStyle(
-                                  color: cor_padrao_um,
+                                  color: corPadraoUm,
                                   fontSize: 70,
                                   fontWeight: FontWeight.w900,
                                 ),
@@ -51,28 +56,29 @@ class simplesState extends State<simples> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _pontuacaoTimeUm--;
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(15)
+                                  Padding(
+                                    padding: EdgeInsets.only(right: espacoBotaoRight),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _pontuacaoTimeUm--;
+                                        });
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(15)
+                                        ),
+                                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                        backgroundColor: corPadraoUm,
+                                        textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 23,
+                                        )
                                       ),
-                                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                      primary: cor_padrao_um,
-                                      textStyle: const TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 23,
-                                      )
+                                      child: const Text('-1')
                                     ),
-                                    child: const Text('-1')
                                   ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
+
                                   ElevatedButton(
                                     onPressed: () {
                                       setState(() {
@@ -83,8 +89,8 @@ class simplesState extends State<simples> {
                                       shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(15)
                                       ),
-                                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                      primary: cor_padrao_um,
+                                      padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                      backgroundColor: corPadraoUm,
                                       textStyle: const TextStyle(
                                         fontWeight: FontWeight.w900,
                                         fontSize: 23,
@@ -94,82 +100,95 @@ class simplesState extends State<simples> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _pontuacaoTimeUm -= 3;
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15)
+                                  Padding(
+                                    padding: EdgeInsets.only(right: espacoBotaoRight, top: espacoBotaoTop),
+                                    child:   ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _pontuacaoTimeUm -= 3;
+                                        });
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(15)
+                                        ),
+                                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                        backgroundColor: corPadraoUm,
+                                        textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 23,
+                                        )
                                       ),
-                                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                      primary: cor_padrao_um,
-                                      textStyle: const TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 23,
-                                      )
+                                      child: const Text('-3')
                                     ),
-                                    child: const Text('-3')
                                   ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  ElevatedButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _pontuacaoTimeUm += 3;
-                                      });
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15)
+
+                                  Padding(
+                                    padding: EdgeInsets.only(top: espacoBotaoTop),
+                                    child: ElevatedButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _pontuacaoTimeUm += 3;
+                                        });
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(15)
+                                        ),
+                                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                        backgroundColor: corPadraoUm,
+                                        textStyle: const TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 23,
+                                        )
                                       ),
-                                      padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                      primary: cor_padrao_um,
-                                      textStyle: const TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 23,
-                                      )
+                                      child: const Text('+3')
                                     ),
-                                    child: const Text('+3')
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _pontuacaoTimeUm = 0;
-                                  });
-                                },
-                                style: ElevatedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15)
-                                  ),
-                                  padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
-                                  primary: cor_padrao_um,
-                                  textStyle: TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 20,
-                                  )
+
+                              Padding(
+                                padding: EdgeInsets.only(top: espacoBotaoTop),
+                                child:  ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      _pontuacaoTimeUm = 0;
+                                    });
+                                  },
+                                  style: ElevatedButton.styleFrom(
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(15)
+                                      ),
+                                      padding: EdgeInsets.symmetric(horizontal: 55, vertical: espacoBotaoTop),
+                                      backgroundColor: corPadraoUm,
+                                      textStyle: const TextStyle(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 20,
+                                      )
+                                    ),
+                                    child: const Text('Zerar')
                                 ),
-                                child: const Text('Zerar')
                               ),
                             ],
                           ),
                         ),
                       ),
 
+                      const SizedBox(
+                        //height: 300,
+                        child: VerticalDivider(
+                          color: Colors.black26,
+                          indent: 200,
+                          endIndent: 200,
+                        )
+                      ),
+
+                      // Espaço para time 2
                       Expanded(
                         child: Container(
                           child: Column(
@@ -177,14 +196,14 @@ class simplesState extends State<simples> {
                             children: [
                               Text("Time 2",
                                 style: TextStyle(
-                                  color: cor_padrao_um,
+                                  color: corPadraoUm,
                                   fontSize: 35,
                                   fontWeight: FontWeight.w900,
                                 ),
                               ),
                               Text("$_pontuacaoTimeDois",
                                 style: TextStyle(
-                                  color: cor_padrao_um,
+                                  color: corPadraoUm,
                                   fontSize: 70,
                                   fontWeight: FontWeight.w900,
                                 ),
@@ -192,28 +211,30 @@ class simplesState extends State<simples> {
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(
+
+                                  Padding(
+                                    padding: EdgeInsets.only(right: espacoBotaoRight),
+                                    child: ElevatedButton(
                                       onPressed: () {
                                         setState(() {
                                           _pontuacaoTimeDois--;
                                         });
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(15)
-                                        ),
-                                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                        primary: cor_padrao_um,
-                                        textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 23,
-                                        )
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(15)
+                                          ),
+                                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                          backgroundColor: corPadraoUm,
+                                          textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 23,
+                                          )
                                       ),
                                       child: const Text('-1')
+                                    ),
                                   ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
+
                                   ElevatedButton(
                                       onPressed: () {
                                         setState(() {
@@ -224,8 +245,8 @@ class simplesState extends State<simples> {
                                         shape: RoundedRectangleBorder(
                                             borderRadius: BorderRadius.circular(15)
                                         ),
-                                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                        primary: cor_padrao_um,
+                                        padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                        backgroundColor: corPadraoUm,
                                         textStyle: const TextStyle(
                                           fontWeight: FontWeight.w900,
                                           fontSize: 23,
@@ -235,76 +256,79 @@ class simplesState extends State<simples> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
+
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  ElevatedButton(
+                                  Padding(
+                                    padding: EdgeInsets.only(top: espacoBotaoTop, right: espacoBotaoRight),
+                                    child: ElevatedButton(
                                       onPressed: () {
                                         setState(() {
                                           _pontuacaoTimeDois -= 3;
                                         });
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(15)
-                                        ),
-                                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                        primary: cor_padrao_um,
-                                        textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 23,
-                                        )
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(15)
+                                          ),
+                                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                          backgroundColor: corPadraoUm,
+                                          textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 23,
+                                          )
                                       ),
                                       child: const Text('-3')
+                                    ),
                                   ),
-                                  const SizedBox(
-                                    width: 15,
-                                  ),
-                                  ElevatedButton(
+
+                                  Padding(
+                                    padding: EdgeInsets.only(top: espacoBotaoTop),
+                                    child: ElevatedButton(
                                       onPressed: () {
                                         setState(() {
                                           _pontuacaoTimeDois += 3;
                                         });
                                       },
                                       style: ElevatedButton.styleFrom(
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(15)
-                                        ),
-                                        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 10),
-                                        primary: cor_padrao_um,
-                                        textStyle: const TextStyle(
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 23,
-                                        )
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(15)
+                                          ),
+                                          padding: EdgeInsets.symmetric(horizontal: 25, vertical: espacoBotaoTop),
+                                          backgroundColor: corPadraoUm,
+                                          textStyle: const TextStyle(
+                                            fontWeight: FontWeight.w900,
+                                            fontSize: 23,
+                                          )
                                       ),
                                       child: const Text('+3')
+                                    ),
                                   ),
                                 ],
                               ),
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              ElevatedButton(
+
+                              Padding(
+                                padding: EdgeInsets.only(top: espacoBotaoTop),
+                                child: ElevatedButton(
                                   onPressed: () {
                                     setState(() {
                                       _pontuacaoTimeDois = 0;
                                     });
                                   },
                                   style: ElevatedButton.styleFrom(
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(15)
-                                      ),
-                                      padding: const EdgeInsets.symmetric(horizontal: 55, vertical: 10),
-                                      primary: cor_padrao_um,
-                                      textStyle: TextStyle(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 20,
-                                      )
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(15)
+                                    ),
+                                    padding: EdgeInsets.symmetric(horizontal: 55, vertical: espacoBotaoTop),
+                                    backgroundColor: corPadraoUm,
+                                    textStyle: const TextStyle(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 20,
+                                    ),
                                   ),
                                   child: const Text('Zerar')
+                                ),
                               ),
                             ],
                           ),
